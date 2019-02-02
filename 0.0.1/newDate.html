@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{date}}
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <!-- 数据的双向绑定，vue最核心的功能 -->
+    <script>
+        var app = new Vue({
+            el : '#app',
+            data: {
+                date : new Date()
+            },
+            created: function(){//实例创建完成后调用，此阶段完成了数据的观测等，但尚未挂载，$el还不能用。选哟初始化处理一些数据时，会比较有用
+                console.log("运行时间：" + this.date);
+            },
+            mounted: function () {// el挂载在实例后调用，一般我们的第一个业务逻辑会在这里开始
+                var _this = this;//申明一个变量指向Vue实例this，保证作用域一致
+                this.timer = setInterval(function () {
+                    _this.date = new Date();//修改数据date
+                }, 1000);
+            },
+            beforeDestory: function () {//实例销毁之前调用，主要解绑一些使用addEventListener监听的事件等
+                if(this.timer){
+                    clearInterval(this.timer);//在Vue实例销毁前，清除我们的定时器
+                }
+            }
+        })
+    </script>
+</body>
+</html>

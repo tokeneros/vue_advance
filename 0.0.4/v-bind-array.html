@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div :class="[isActive ? activeCls : '',errorCls]"></div>
+    <div :class="[{ 'active' : isActive },errorCls]"></div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            activeCls: 'active',
+            errorCls: 'error'
+        }
+    })
+</script>
+</body>
+</html>

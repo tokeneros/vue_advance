@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!-- 页面上还是可以显示值 -->
+    <span v-pre>{{这里的内容是不会被编译的}}</span>
+    <!-- vue只支持单个表达式，不支持语句和流控制 -->
+    {{ number / 10 }}
+    {{ isOK ? '确定' : '取消' }}
+    {{ text.split(',').reverse().join(',') }}
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            number: 100,
+            isOK: false,
+            text: '123,456'
+        }
+    })
+</script>
+</body>
+</html>
