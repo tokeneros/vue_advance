@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!-- 这里出现一个bug，一直显示的都是用户名 -->
+    <template v-if="type === 'name'">
+        <label>用户名：</label>
+        <label>用户名：</label>
+        <input placeholder="输入用户名" key="name-input">
+    </template>
+    <template v-else>
+        <label>邮箱：</label>
+        <input placeholder="输入邮箱" key="mail-input">
+    </template>
+    <button @click="handleToggleClick">切换输入类型</button>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            type: 'name'
+        },
+        methods: {
+            handleToggleClick: function(){
+                this.type = this.type === 'name' ? 'mail' : 'name';
+            }
+        }
+    })
+</script>
+</body>
+</html>

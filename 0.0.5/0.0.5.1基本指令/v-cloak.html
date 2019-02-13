@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 当网速较慢、Vue.js文件还没有完全加载完，会在页面上显示{{message}}
+     只适用于简单的项目，工程化的项目如：webpack和vue-router将不再需要-->
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+    {{message}}
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '这是一段文本'
+        }
+    })
+</script>
+</body>
+</html>
