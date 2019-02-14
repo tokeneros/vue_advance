@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <template v-for="book in books">
+            <li>书名：{{book.name}}</li>
+            <li>作者：{{book.author}}</li>
+        </template>
+    </ul>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            books: [
+                {
+                    name: '《Vue.js实战》',
+                    author: '梁灏'
+                },
+                {
+                    name: '《JavaScript语言精粹》',
+                    author: 'Douglas Crockford'
+                },
+                {
+                    name: '《JavaScript高级程序设计》',
+                    author: 'Nicholas C.Zakas'
+                }
+            ]
+        }
+    });
+
+    // 不会触发视图更新
+    // app.books[2] = {
+    //     name: '《CSS 揭秘》',
+    //     author: 'Lea Verou'
+    // }
+
+    // 1.使用Vue内置的set方法
+    // Vue.set(app.books,3,{
+    //     name: '《CSS 揭秘》',
+    //     author: 'Lea Verou'
+    // });
+
+    // 2.webpack 中使用组件化的方式(进阶篇中会使用)
+    // 非webpack模式下也可以使用$set方法，例如app.$set
+    // webpack模式可以使用this.$set
+    // app.$set(app.books,3,{
+    //     name: '《CSS 揭秘》',
+    //     author: 'Lea Verou'
+    // })
+
+    // 3.使用函数splice来进行插入
+    app.books.splice(3,1,{
+        name: '《CSS 揭秘》',
+        author: 'Lea Verou'
+    })
+
+</script>
+</body>
+</html>

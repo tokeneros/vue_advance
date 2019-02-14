@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <textarea  v-model="text" placeholder="请输入..."></textarea>
+    <p>输入的内容是：</p>
+    <p style="white-space: pre">{{ text }}</p>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            text: ''
+        }
+    })
+</script>
+</body>
+</html>

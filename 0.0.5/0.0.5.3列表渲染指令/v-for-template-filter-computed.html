@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <template v-for="book in sortedBooks">
+            <li>书名：{{book.name}}</li>
+            <li>作者：{{book.author}}</li>
+        </template>
+    </ul>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            books: [
+                {
+                    name: '《Vue.js实战》',
+                    author: '梁灏'
+                },
+                {
+                    name: '《JavaScript语言精粹》',
+                    author: 'Douglas Crockford'
+                },
+                {
+                    name: '《JavaScript高级程序设计》',
+                    author: 'Nicholas C.Zakas'
+                }
+            ]
+        },
+        computed: {
+            // 不改变原数组，通过一个数组的副本来做过滤或排序的显示，可以使用计算属性来返回过滤或排序后的数组
+            filterBooks: function () {
+                return this.books.filter(function (book) {
+                    return book.name.match(/JavaScript/);
+                });
+            },
+            sortedBooks: function () {
+                // TODO 不能执行
+                return this.books.sort(function (a , b) {
+                    return a.name.length > b.name.length;
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>
