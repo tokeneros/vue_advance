@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <table>
+        <!--<tbody is="my-component"></tbody>-->
+        <!-- 这里直接使用模板元素无法使用，需要使用特殊的is属性来挂载组件 -->
+        <!--<tbody>-->
+        <!--<my-component></my-component>-->
+        <!--</tbody>-->
+    </table>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    Vue.component('my-component',{
+        template: '<div>这里是组件的内容</div>'
+    });
+    // 特殊的大致为table、ul、ol、select
+    var app = new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+</html>

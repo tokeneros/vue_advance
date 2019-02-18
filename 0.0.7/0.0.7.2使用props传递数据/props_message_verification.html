@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-component propA="aaa" ></my-component>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    Vue.component('my-component', {
+        // 验证的type类型是 String|Number|Boolean|Object|Array|Function
+        props: {
+            // 必须是数字类型
+            propA: Number,
+            // 必须是字符串或数字类型
+            propB: [Number, String],
+            propC: {//布尔值，如果没有定义，默认值就是true
+                type: Boolean,
+                default: true
+            },
+            propD: {// 数字，而且必传
+                type: Number,
+                required: true
+            },
+            propE: {// 如果是数组或对象，默认值必须是一个函数来返回
+                type: Array,
+                default: function () {
+                    return [];
+                }
+            },
+            propF: {// 自定义一个验证函数
+                validator: function (value) {
+                    return value > 10
+                }
+            }
+        },
+        // props: ['width'],
+        template: '<div>{{ this.propA }}</div>',
+    });
+
+    var app = new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+</html>

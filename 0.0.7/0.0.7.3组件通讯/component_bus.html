@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    <component-a></component-a>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    // 空实例，中间站
+    var bus = new Vue();
+
+    Vue.component('component-a',{
+        template: '<button @click=\"handleEvent\">传递事件</button>',
+        methods: {
+            handleEvent: function () {
+                // 点击按钮会通过bus把时间on-messsage发出去
+                bus.$emit('on-message','来自组件companent-a的内容');
+            }
+        }
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: ''
+        },
+        mounted: function () {// 生命周期 mounted 钩子函数 监听来自bus的事件on-message
+            var _this = this;
+            bus.$on('on-message',function (msg) {
+                _this.message = msg;
+            });
+        }
+    })
+</script>
+</body>
+</html>

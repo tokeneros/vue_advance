@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    // 应用的是外部的对象，所以三个button数值一样
+    var data = {
+        counter: 0
+    };
+
+    Vue.component('my-component',{
+        template: '<button @click="counter++">{{ counter }}</button>',
+        data: function () {// 与 实例不同，data必须是函数，然后将数据return出去
+            // return data;
+            return {// 这样三个按钮就互不影响了,完全达到复用的目的
+                counter: 0
+            }
+        }
+    });
+
+    var app = new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+</html>
