@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <child-component></child-component>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    Vue.component('child-component',function(resolve, reject){
+        window.setTimeout(function () {
+            resolve({
+                template: '<div>我是异步渲染的</div>'
+            })
+        },2000);
+    });
+
+    var app = new Vue({
+        el: '#app'
+    })
+</script>
+</body>
+</html>

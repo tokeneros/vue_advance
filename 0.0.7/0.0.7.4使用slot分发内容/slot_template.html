@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <child-component>
+        <!-- 这里props只是一个临时变量
+        ，template内可以通过临时变量props访问来自子组件插槽的数据msg -->
+        <template scope="props">
+            <p>来自父组件的内容</p>
+            <p>{{ props.msg }}</p>
+        </template>
+    </child-component>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    Vue.component('child-component',{
+        template: '\
+        <div class="container">\
+            <slot msg="来自子组件的内容"></slot>\
+        </div>'
+    });
+
+    var app = new Vue({
+        el: '#app'
+    })
+</script>
+</body>
+</html>

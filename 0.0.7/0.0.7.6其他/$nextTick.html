@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div id="div" v-if="showDiv">这是一段文本</div>
+    <button @click="getText">获取div内容</button>
+</div>
+<script src="./../../vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            showDiv: false
+        },
+        methods: {
+            getText: function () {
+                // Cannot read property 'innerText' of null
+                // this.showDiv  = true;
+                // var text = document.getElementById('div').innerText;
+                // console.log(text);
+                // 应为Vue是异步更新
+                this.showDiv  = true;
+                this.$nextTick(function(){
+                    var text = document.getElementById('div').innerText;
+                    console.log(text);
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>
