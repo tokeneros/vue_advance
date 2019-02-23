@@ -1,0 +1,33 @@
+命令 ：
+npm init ——》 NPM初始化
+npm install webpack --save-dev ——》 本地局部安装webpack；save-dev会作为开发以来安装webpack
+npm install webpack-dev-server --save-dev ——》 在开发坏境中提供很多服务，如:启动一个服务器、热更新、接口代理
+pm install webpack-cli --save-dev ——》 npm dev run 时系统提示缺少这个
+npm dev run  ——》 会找到package.json中的scripts中的key为dev，执行webpack-dev-server --open --config webpack.config.js
+npm install babel-loader --save-dev
+npm uninstall babel-loader --save-dev ——》 卸载
+npm install extract-text-webpack-plugin --save-dev ——》将散乱的css提取出来，生成一个main.css webpack4.0以上版本不适用
+npm install extract-text-webpack-plugin@next --save-dev ——》webpack4.0
+
+
+接下来就是使用.vue需要的加载器
+vue文件主要包含3部分 template\script\style
+npm install --save vue
+npm install --save-dev vue-loader
+npm install --save-dev vue-style-loader
+npm install --save-dev vue-template-compiler
+npm install --save-dev vue-hot-reload-api
+// 注意版本可能会冲突
+npm install --save-dev babel-loader@8.0.0-beta.0 @babel/core @babel/preset-env
+替换掉{
+    npm install --save-dev babel
+    npm install --save-dev babel-loader@7.1.5
+    npm install --save-dev babel-core
+}
+npm install --save-dev babel-plugin-transform-runtime
+npm install --save-dev babel-preset-es2015
+npm install --save-dev babel-runtime
+npm install babel-preset-env --save-dev
+
+详细介绍：
+webpack —— .js配置文件
